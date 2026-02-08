@@ -1,23 +1,23 @@
 ---
-description: Search playwright scraper data and documentation in COOLFORK project
+description: Search playwright scraper data and documentation in EquipmentDB project
 tags: [playwright, scraper, data, search]
 ---
 
-You are searching the playwright scraper project data in the COOLFORK directory.
+You are searching the playwright scraper project data in the EquipmentDB directory.
 
 **Instructions:**
 
 1. **First, ask the user to choose a category** using AskUserQuestion (max 4 options, so split into two questions):
 
    **Question 1:**
-   - Audio Excel Database - Search audio equipment, PA systems, microphones, processing
-   - Video Excel Database - Search cameras, projectors, lenses, screens, video processing
-   - Lighting Excel Database - Search fixtures, consoles, LED, moving lights, dimmers
+   - Audio Database - Search audio equipment, PA systems, microphones, processing
+   - Video Database - Search cameras, projectors, lenses, screens, video processing
+   - Lighting Database - Search fixtures, consoles, LED, moving lights, dimmers
    - More categories... - See Rigging, Networking, or search all categories
 
    **If user selects "More categories...", ask Question 2:**
-   - Rigging Excel Database - Search truss, motors, chain hoists, rigging hardware
-   - Networking Excel Database - Search network switches, wireless systems, control networks
+   - Rigging Database - Search truss, motors, chain hoists, rigging hardware
+   - Networking Database - Search network switches, wireless systems, control networks
    - All Categories - Search across all equipment categories
 
 2. **Then ask for the search term** if not provided in {{prompt}}
@@ -25,7 +25,7 @@ You are searching the playwright scraper project data in the COOLFORK directory.
 3. **Run the search** within the selected category:
    ```bash
    # For specific category:
-   $HOME/.claude/scripts/playwright-search.sh "<search_term>" 10 "/Volumes/DevDrive/Projects/COOLFORK/<Category> Excel Database"
+   $HOME/.claude/scripts/playwright-search.sh "<search_term>" 10 "/Volumes/DevDrive/Projects/EquipmentDB/<Category> Database"
 
    # For all categories:
    $HOME/.claude/scripts/playwright-search.sh "<search_term>" 10
@@ -50,7 +50,7 @@ You are searching the playwright scraper project data in the COOLFORK directory.
 - Ranks results by relevance score
 
 **Search Scope:**
-- Location: `/Volumes/DevDrive/Projects/COOLFORK`
+- Location: `/Volumes/DevDrive/Projects/EquipmentDB`
 - Categories: Audio, Video, Lighting, Rigging, Networking
 - File types: Markdown, JSON, logs, JavaScript/TypeScript
 

@@ -11,8 +11,8 @@ The Ruby script MUST use the `xcodeproj` gem (already installed). This is the Co
 ## Step 1: Identify the Project
 
 First, find the `.xcodeproj` file and identify:
-1. The project path (e.g., `$HOME/4Techz/4Techz/4Techz.xcodeproj`)
-2. The target name (check inside project for exact name like `FourTechz`, `4Techz`, `PMNotes App`, etc.)
+1. The project path (e.g., `$HOME/MyApp/MyApp/MyApp.xcodeproj`)
+2. The target name (check inside project for exact name like `MyApp`, `NotesApp`, etc.)
 3. The group structure in the project
 
 ## Step 2: Find Missing Files
@@ -28,16 +28,16 @@ Use this exact pattern - DO NOT deviate:
 require 'xcodeproj'
 
 # EXAMPLES OF VALID PROJECT PATHS:
-# project_path = '$HOME/4Techz/4Techz/4Techz.xcodeproj'
-# project_path = '$HOME/PMNotesApp/PMNotes App/PMNotes App.xcodeproj'
+# project_path = '$HOME/MyApp/MyApp/MyApp.xcodeproj'
+# project_path = '$HOME/NotesApp/NotesApp/NotesApp.xcodeproj'
 
 project_path = 'FULL_PATH_TO_XCODEPROJ'  # <- MUST be absolute path
 project = Xcodeproj::Project.open(project_path)
 
 # EXAMPLES OF PARENT PATHS (the group hierarchy in Xcode):
-# parent_path = '4Techz/Features'
-# parent_path = '4Techz/Models'
-# parent_path = 'PMNotes App/Views'
+# parent_path = 'MyApp/Features'
+# parent_path = 'MyApp/Models'
+# parent_path = 'NotesApp/Views'
 
 parent_path = 'GROUP_PATH'  # <- Path in Xcode's group structure
 group_name = 'NEW_OR_EXISTING_GROUP'
@@ -56,9 +56,8 @@ sub_group = main_group.find_subpath(subgroup_name, false)
 sub_group ||= main_group.new_group(subgroup_name, subgroup_name)
 
 # EXAMPLES OF TARGET NAMES (must match exactly):
-# target = project.targets.find { |t| t.name == 'FourTechz' }
-# target = project.targets.find { |t| t.name == '4Techz' }
-# target = project.targets.find { |t| t.name == 'PMNotes App' }
+# target = project.targets.find { |t| t.name == 'MyApp' }
+# target = project.targets.find { |t| t.name == 'NotesApp' }
 
 target = project.targets.find { |t| t.name == 'TARGET_NAME' }
 abort "Target not found" if target.nil?
@@ -95,8 +94,8 @@ puts "Project saved successfully"
 
 | Project | Path | Target Name |
 |---------|------|-------------|
-| 4Techz | `$HOME/4Techz/4Techz/4Techz.xcodeproj` | `FourTechz` |
-| PMNotes | `$HOME/PMNotesApp/PMNotes App/PMNotes App.xcodeproj` | `PMNotes App` |
+| MyApp | `$HOME/MyApp/MyApp/MyApp.xcodeproj` | `MyApp` |
+| NotesApp | `$HOME/NotesApp/NotesApp/NotesApp.xcodeproj` | `NotesApp` |
 
 ## To Find Target Name:
 

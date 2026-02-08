@@ -15,6 +15,12 @@ settings.local.json
 !**/config/*.template.json
 !**/config/README.md
 
+# Environment files (keep .env.example for documentation)
+.env
+.env.local
+.env.*.local
+!.env.example
+
 # Personal data
 CLAUDE.md
 session-context.md

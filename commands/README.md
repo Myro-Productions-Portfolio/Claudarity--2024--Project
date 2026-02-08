@@ -58,7 +58,7 @@ Slash commands provide quick access to Claudarity features directly from the Cla
   ```
   /goplaywright browser automation
   ```
-  Searches COOLFORK project's Playwright implementation and docs.
+  Searches EquipmentDB project's Playwright implementation and docs.
 
 - **/ruby**: Add missing files to Xcode project
   ```

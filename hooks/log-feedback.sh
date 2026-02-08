@@ -250,7 +250,7 @@ fi
 
     # Check common .env locations if not already set
     if [ -z "$api_key" ]; then
-      for env_file in "$HOME/4Techz/.env" "$HOME/.env" "$HOME/.claude/.env"; do
+      for env_file in "$HOME/.env" "$HOME/.claude/.env"; do
         if [ -f "$env_file" ]; then
           # Extract ANTHROPIC_API_KEY or Anthropic_API_Key from .env (trim whitespace properly)
           api_key=$(grep -E "^(ANTHROPIC_API_KEY|Anthropic_API_Key)" "$env_file" 2>/dev/null | sed 's/^[^=]*=//' | sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//' | head -n1)

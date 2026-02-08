@@ -4,7 +4,7 @@
 #
 # Purpose:
 #   Search playwright scraper project data, documentation, logs, and reports
-#   in the COOLFORK project directory
+#   in the EquipmentDB project directory
 #
 # Usage:
 #   ./playwright-search.sh "search terms" [limit]
@@ -21,8 +21,8 @@
 set -euo pipefail
 
 # ============ PATHS ============
-COOLFORK_PATH="/Volumes/DevDrive/Projects/COOLFORK"
-WEB_SCRAPER_PATH="$COOLFORK_PATH/Video Excel Database/web-scraper"
+EQUIPMENTDB_PATH="/Volumes/DevDrive/Projects/EquipmentDB"
+WEB_SCRAPER_PATH="$EQUIPMENTDB_PATH/Video Database/web-scraper"
 
 # ============ PARSE ARGUMENTS ============
 QUERY="${1:-}"
@@ -34,8 +34,8 @@ if [ -z "$QUERY" ]; then
 fi
 
 # ============ CHECK IF PATH EXISTS ============
-if [ ! -d "$COOLFORK_PATH" ]; then
-  echo "❌ ERROR: COOLFORK directory not found at $COOLFORK_PATH"
+if [ ! -d "$EQUIPMENTDB_PATH" ]; then
+  echo "ERROR: EquipmentDB directory not found at $EQUIPMENTDB_PATH"
   exit 1
 fi
 
@@ -43,7 +43,7 @@ fi
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "🎭 SEARCHING PLAYWRIGHT SCRAPER DATA FOR: $QUERY"
-echo "📁 Location: $COOLFORK_PATH"
+echo "Location: $EQUIPMENTDB_PATH"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -122,7 +122,7 @@ search_playwright_data() {
     if [ "$score" -gt 0 ]; then
       echo "$score|$file" >> "$temp_results"
     fi
-  done < <(find "$COOLFORK_PATH" -type f -name "*.md" -not -path "*/node_modules/*" 2>/dev/null)
+  done < <(find "$EQUIPMENTDB_PATH" -type f -name "*.md" -not -path "*/node_modules/*" 2>/dev/null)
 
   # Search log files
   while IFS= read -r file; do
@@ -132,7 +132,7 @@ search_playwright_data() {
     if [ "$score" -gt 0 ]; then
       echo "$score|$file" >> "$temp_results"
     fi
-  done < <(find "$COOLFORK_PATH" -type f -name "*.log" -not -path "*/node_modules/*" 2>/dev/null)
+  done < <(find "$EQUIPMENTDB_PATH" -type f -name "*.log" -not -path "*/node_modules/*" 2>/dev/null)
 
   # Search JSON data files (if they exist in data directories)
   if [ -d "$WEB_SCRAPER_PATH/data" ]; then
@@ -164,7 +164,7 @@ search_playwright_data() {
       local icon=$(get_file_icon "$file_path")
       local file_type=$(get_file_type "$file_path")
       local file_name=$(basename "$file_path")
-      local rel_path=$(echo "$file_path" | sed "s|$COOLFORK_PATH/||")
+      local rel_path=$(echo "$file_path" | sed "s|$EQUIPMENTDB_PATH/||")
 
       # Get file modified time
       local modified=$(stat -f "%Sm" -t "%b %d at %I:%M %p" "$file_path" 2>/dev/null || echo "Unknown")
@@ -197,8 +197,8 @@ if ! search_playwright_data; then
   echo "❌ No matches found for: $QUERY"
   echo ""
   echo "💡 Try searching for:"
-  echo "   - scraper, playwright, fullcompass, christie"
-  echo "   - video, broadcast, lenses, projector"
+  echo "   - scraper, playwright, equipment, catalog"
+  echo "   - video, audio, lighting, database"
   echo "   - implementation, components, test"
   echo ""
 fi
