@@ -314,5 +314,5 @@ Documentation improvements welcome! See [Contributing Guide](../CONTRIBUTING.md)
 ---
 
 **Last Updated**: February 2026
-**Maintainer**: Nicolas Robert Myers
+**Maintainer**: Myro Productions
 **Status**: Documentation complete, ready for modernization phase
